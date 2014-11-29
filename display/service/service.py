@@ -1,4 +1,5 @@
 import requests
+import gevent
 from sys import argv
 from os.path import join
 import json
@@ -81,3 +82,32 @@ for sub in subscriptions.keys():
 
 dump_items("subscriptions.json", subscriptions)
 
+async_list = []
+
+def run_subscription(topic_id):
+	global subscriptions
+	func = fact_handlers[topic_id]
+	sub_id = subscriptions[topic_id]["id"]
+	url = "%stopics/%s/subscriptions/%s/next"%(base_url, topic_id, sub_id)
+
+	while True:
+		r = requests.get(url)
+		if r.status_code == 204:
+			print "%s: timed out, having another go"%topic_id
+		elif r.status_code == 200:
+			fact = r.json()
+			print "new fact for %s: %s"%(topic_id, fact)
+			func(fact)
+			# Can't update this because this doesn't return the last fact's....
+			#subscriptions[topic_id]["last_fact"] = fact["combo_id"]
+			#dump_items("subscriptions.json", subscriptions)
+		else:
+			print "Error!", r.text
+			raise Exception, r.text
+
+greenlets = []
+for sub in subscriptions.keys():
+	greenlets.append(gevent.spawn(run_subscription, sub))
+
+print "running subscriptions for: %s"%(", ".join(fact_handlers.keys()))
+gevent.joinall(greenlets, raise_error = True)
