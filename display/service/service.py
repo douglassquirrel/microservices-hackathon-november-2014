@@ -51,9 +51,10 @@ def on_player_joined(obj):
 	if uuid not in player_ids:
 		player_ids.append(uuid)
 		dump_items("players.json", player_ids)
-		players[uuid] = {"id": uuid, "connected": True, "score": 0, "playing": False}
+		players[uuid] = {"id": uuid, "connected": True, "score": 0, "playing": False, "name": player["name"]}
 	else:
 		players[uuid]["connected"] = True
+		players[uuid]["name"] = player["name"]
 	dump_items("player-%s.json"%uuid, players[uuid])
 
 fact_handlers = {"player.joined": on_player_joined}
