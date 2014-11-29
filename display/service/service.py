@@ -86,13 +86,27 @@ def on_game_start(obj):
 	game_ids.append(game_id)
 	dump_items("games.json", game_ids)
 
+def on_move_accepted(obj):
+	global games
+	game_id = obj["game"]
+	game = games[game_id]
+	player_id = obj["player"]
+	turn = {"x":obj["position"]["x"], "y":obj["position"]["y"]}
+	if game["players"]["nought"]["player_id"] == player_id:
+		game["players"]["nought"]["turns"].append(turn)
+	elif game["players"]["cross"]["player_id"] == player_id:
+		game["players"]["cross"]["turns"].append(turn)
+	else:
+		raise Exception, "Player %s isn't in game %s"%(player_id, game_id)
+	dump_items("game-%s.json"%game_id, games[game_id])
+
 def nice_fact_handler(topic_id, obj):
 	try:
 		fact_handlers[topic_id](obj)
 	except Exception, e:
 		print "error during fact handling for topic %s and fact %s: %s"%(topic_id, obj, e)
 
-fact_handlers = {"player.joined": on_player_joined, "game.start": on_game_start}
+fact_handlers = {"player.joined": on_player_joined, "game.start": on_game_start, "game.moveaccepted": on_move_accepted}
 
 changed_subs = False
 for sub in fact_handlers.keys():
