@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>TicTacToe</title>
+        <link rel="stylesheet" type="text/css" href="../site.css" />
+    </head>
+    <body>
+        <h2>{{ page_title }}</h2>
+        <div class="games">
+            <h3>Games</h3>
+            {% for game in games %}
+            <div class="game">
+                {% for move in game.turns %}
+                <li>{{ move|escape }}</li>
+                {% endfor %}
+                <p>{{game.status|escape}}</p>               
+            </div>
+            {% endfor %}
+        </div>
+        <div class="players">
+            <h3>Players</h3>
+            {% for player in players %}
+            <li>{{ player|escape }}</li>
+            {% endfor %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,11 @@
+body {
+margin: auto;
+padding: 1em;
+}
+h2 {
+color: #red;
+}
+.players li, .game li {
+list-style-type:none;
+text-decoration:none;
+}
