@@ -100,14 +100,14 @@ var _ = Describe("Match Maker", func() {
 				matchMaker.AddPlayerToQueue("player-d")
 			})
 
-			It("a first match", func() {
+			It("makes a first match", func() {
 				match := matchMaker.MakeMatch()
 				Ω(match.NaughtsPlayerID).To(Equal("player-a"))
 				Ω(match.CrossesPlayerID).To(Equal("player-b"))
 				Ω(match.GameID).To(Equal(1))
 			})
 
-			It("a second match", func() {
+			It("makes a second match", func() {
 				matchMaker.MakeMatch()
 				match := matchMaker.MakeMatch()
 				Ω(match.NaughtsPlayerID).To(Equal("player-c"))
