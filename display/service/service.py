@@ -1,8 +1,10 @@
 import requests
-import gevent
+import gevent, gevent.monkey
 from sys import argv
 from os.path import join
 import json
+
+gevent.monkey.patch_all()
 
 base_url = argv[1]
 data_folder = argv[2]
@@ -63,6 +65,7 @@ fact_handlers = {"player.joined": on_player_joined}
 changed_subs = False
 for sub in fact_handlers.keys():
 	if sub not in subscriptions:
+		print "making new subscription for %s"%sub
 		sub_id = make_subscription(sub)
 		subscriptions[sub] = {"id": sub_id, "last_fact": 0}
 		changed_subs = True
@@ -109,5 +112,5 @@ greenlets = []
 for sub in subscriptions.keys():
 	greenlets.append(gevent.spawn(run_subscription, sub))
 
-print "running subscriptions for: %s"%(", ".join(fact_handlers.keys()))
+print "running subscriptions for: %s"%(", ".join(subscriptions.keys()))
 gevent.joinall(greenlets, raise_error = True)
