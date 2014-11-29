@@ -40,6 +40,13 @@ for player_id in player_ids:
 for remove in to_remove:
 	player_ids.remove(remove)
 
+game_ids = load_items("games.json", [])
+games = {}
+for game_id in game_ids:
+	game = load_items("game-%s.json"%game_id, None)
+	if game != None:
+		games[game_id] = game
+
 def on_player_joined(obj):
 	global player_ids
 	global players
@@ -60,13 +67,32 @@ def on_player_joined(obj):
 		players[uuid]["name"] = player["name"]
 	dump_items("player-%s.json"%uuid, players[uuid])
 
-fact_handlers = {"player.joined": on_player_joined}
+def on_game_start(obj):
+	global game_ids
+	global games
+	if not "game_id" in obj:
+		raise Exception, "need a game_id"
+	if not "naughts_player_id" in obj:
+		raise Exception, "need a naughts_player_id"
+	if not "crosses_player_id" in obj:
+		raise Exception, "need a crosses_player_id"
+	game_id = obj["game_id"]
+	games[game_id] = {"game_id":game_id, "players":
+	{
+		"nought": {"turns":[], "player_id": obj["naughts_player_id"]},
+		"cross": {"turns":[], "player_id": obj["crosses_player_id"]},
+	}}
+	dump_items("game-%s.json"%game_id, games[game_id])
+	game_ids.append(game_id)
+	dump_items("games.json", game_ids)
 
 def nice_fact_handler(topic_id, obj):
 	try:
 		fact_handlers[topic_id](obj)
 	except Exception, e:
 		print "error during fact handling for topic %s and fact %s: %s"%(topic_id, obj, e)
+
+fact_handlers = {"player.joined": on_player_joined, "game.start": on_game_start}
 
 changed_subs = False
 for sub in fact_handlers.keys():
