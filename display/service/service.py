@@ -62,6 +62,12 @@ def on_player_joined(obj):
 
 fact_handlers = {"player.joined": on_player_joined}
 
+def nice_fact_handler(topic_id, obj):
+	try:
+		fact_handlers[topic_id](obj)
+	except Exception, e:
+		print "error during fact handling for topic %s and fact %s: %s"%(topic_id, obj, e)
+
 changed_subs = False
 for sub in fact_handlers.keys():
 	if sub not in subscriptions:
@@ -78,7 +84,7 @@ for sub in subscriptions.keys():
 	facts = r.json()
 	for fact in facts:
 		print "new fact for %s: %s"%(sub, fact)
-		fact_handlers[sub](fact)
+		nice_fact_handler(sub, fact)
 	if facts!=[]:
 		max_fact = max([x["combo_id"] for x in facts])
 		subscriptions[sub]["last_fact"] = max_fact
@@ -89,7 +95,6 @@ async_list = []
 
 def run_subscription(topic_id):
 	global subscriptions
-	func = fact_handlers[topic_id]
 	sub_id = subscriptions[topic_id]["id"]
 	url = "%stopics/%s/subscriptions/%s/next"%(base_url, topic_id, sub_id)
 
@@ -100,13 +105,14 @@ def run_subscription(topic_id):
 		elif r.status_code == 200:
 			fact = r.json()
 			print "new fact for %s: %s"%(topic_id, fact)
-			func(fact)
+			nice_fact_handler(topic_id, fact)
 			# Can't update this because this doesn't return the last fact's....
 			#subscriptions[topic_id]["last_fact"] = fact["combo_id"]
 			#dump_items("subscriptions.json", subscriptions)
 		else:
-			print "Error!", r.text
-			raise Exception, r.text
+			print "Error from server during %s"%topic_id, r.text
+			print "Pausing for 5 seconds before trying again..."
+			gevent.sleep(5)
 
 greenlets = []
 for sub in subscriptions.keys():
