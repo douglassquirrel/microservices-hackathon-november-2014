@@ -2,5 +2,6 @@
     "id": "bar", 
     "connected": true, 
     "score": 0, 
-    "playing": true
+    "playing": true,
+    "name": "Bob"
 }

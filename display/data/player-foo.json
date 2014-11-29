@@ -2,5 +2,6 @@
     "id": "foo", 
     "connected": true, 
     "score": 1, 
-    "playing": true
+    "playing": true,
+    "name": "Alice"
 }
