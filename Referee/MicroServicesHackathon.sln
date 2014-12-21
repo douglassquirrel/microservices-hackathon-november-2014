@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServicesHackathon", "MicroServicesHackathon\MicroServicesHackathon.csproj", "{971917B3-52CC-462E-81A3-832995311624}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A01BF8EE-7159-4511-95AB-81B054878DE9}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServicesHackathon.Domain", "MicroServicesHackathon.Domain\MicroServicesHackathon.Domain.csproj", "{6D7D639B-9B21-4756-ADB7-6F04C5F6EF5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServicesHackathon.Domain.Tests", "MicroServicesHackathon.Domain.Tests\MicroServicesHackathon.Domain.Tests.csproj", "{4AFC7EEC-5F0C-415C-92A2-C54FE7B96E8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServicesHackathon.Facts", "MicroServicesHackathon.Facts\MicroServicesHackathon.Facts.csproj", "{8CD32121-475B-48FE-8104-CA03CDAB791C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServicesHackathon.Rest", "MicroServicesHackathon.Rest\MicroServicesHackathon.Rest.csproj", "{14AC8A2E-D021-4821-81F8-D5D21B7EE51E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServicesHackathon.Data", "MicroServicesHackathon.Data\MicroServicesHackathon.Data.csproj", "{592F1501-5521-4A3B-95CD-3B35CCFAF3A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServicesHackathon.Data.Redis", "MicroServicesHackathon.Data.Redis\MicroServicesHackathon.Data.Redis.csproj", "{C9DB54DA-7326-4E49-A114-A35A5D75075E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServicesHackathon.Data.Redis.Tests", "MicroServicesHackathon.Data.Redis.Tests\MicroServicesHackathon.Data.Redis.Tests.csproj", "{638D3E14-63A7-4F16-B3C6-819B75F767DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServicesHackathon.Tests", "MicroServicesHackathon.Tests\MicroServicesHackathon.Tests.csproj", "{308BD1EC-A706-4D45-B631-CA2A2528314F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{971917B3-52CC-462E-81A3-832995311624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{971917B3-52CC-462E-81A3-832995311624}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{971917B3-52CC-462E-81A3-832995311624}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{971917B3-52CC-462E-81A3-832995311624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D7D639B-9B21-4756-ADB7-6F04C5F6EF5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D7D639B-9B21-4756-ADB7-6F04C5F6EF5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D7D639B-9B21-4756-ADB7-6F04C5F6EF5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D7D639B-9B21-4756-ADB7-6F04C5F6EF5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AFC7EEC-5F0C-415C-92A2-C54FE7B96E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AFC7EEC-5F0C-415C-92A2-C54FE7B96E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AFC7EEC-5F0C-415C-92A2-C54FE7B96E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AFC7EEC-5F0C-415C-92A2-C54FE7B96E8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CD32121-475B-48FE-8104-CA03CDAB791C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CD32121-475B-48FE-8104-CA03CDAB791C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CD32121-475B-48FE-8104-CA03CDAB791C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CD32121-475B-48FE-8104-CA03CDAB791C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14AC8A2E-D021-4821-81F8-D5D21B7EE51E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14AC8A2E-D021-4821-81F8-D5D21B7EE51E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14AC8A2E-D021-4821-81F8-D5D21B7EE51E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14AC8A2E-D021-4821-81F8-D5D21B7EE51E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{592F1501-5521-4A3B-95CD-3B35CCFAF3A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{592F1501-5521-4A3B-95CD-3B35CCFAF3A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{592F1501-5521-4A3B-95CD-3B35CCFAF3A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{592F1501-5521-4A3B-95CD-3B35CCFAF3A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9DB54DA-7326-4E49-A114-A35A5D75075E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9DB54DA-7326-4E49-A114-A35A5D75075E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9DB54DA-7326-4E49-A114-A35A5D75075E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9DB54DA-7326-4E49-A114-A35A5D75075E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{638D3E14-63A7-4F16-B3C6-819B75F767DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{638D3E14-63A7-4F16-B3C6-819B75F767DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{638D3E14-63A7-4F16-B3C6-819B75F767DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{638D3E14-63A7-4F16-B3C6-819B75F767DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{308BD1EC-A706-4D45-B631-CA2A2528314F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{308BD1EC-A706-4D45-B631-CA2A2528314F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{308BD1EC-A706-4D45-B631-CA2A2528314F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{308BD1EC-A706-4D45-B631-CA2A2528314F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
