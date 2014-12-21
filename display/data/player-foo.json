@@ -1,0 +1,7 @@
+{
+    "id": "foo", 
+    "connected": true, 
+    "score": 1, 
+    "playing": true,
+    "name": "Alice"
+}

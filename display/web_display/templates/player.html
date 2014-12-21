@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>TicTacToe</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+    </head>
+    <body>
+        <h2>{{ page_title }}</h2>
+        <div class="player">
+            <p>{{ player }}</p>
+            {% for game in games %}
+            <div class="game">
+                <pre>{{ game.turns|escape }}</pre>
+                <p>{{game.status}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>

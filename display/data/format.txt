@@ -1,0 +1,35 @@
+players.json
+
+[
+PLAYER_GUID, OTHER_PLAYER_GUID,... (etc, etc)
+]
+
+player-GUID.json
+
+{“id”: “PLAYER_GUID”, “active”: “BOOLEAN”, “score”: “INTEGER”, “playing”: “BOOLEAN”}
+
+{“id”: “foo”, “connected”:”true”, “score”: “1”, “playing” :”true”}
+
+games.json
+
+[
+	GAME_ID, OTHER_GAME_ID,... (etc, etc)
+]
+
+game-GAME_ID.json
+
+{“id”:”GAME_ID”, “status”: “running|won|drawn”, “winner”: “PLAYER_GUID|<empty>”,
+“players”:
+{“PLAYER_NOUGHT”: [
+	{“player_id”: “PLAYER_GUID”, “x”: “X_COORDINATE”, “y”: “Y_COORDINATE”, “valid”: “BOOLEAN”},
+	...
+	],
+“PLAYER_CROSSES”: [... (turns list)]
+}
+
+{“game_id”: “foo”,
+“players”: {“nought”: 
+{
+“turns”:[{“x”:”0”, “y”:”1”}], 
+“player_id”: “bar”
+}, “cross”: {}}
